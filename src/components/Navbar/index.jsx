@@ -17,6 +17,12 @@ function Navbar() {
           <NavLink to="/" className={isLinkActive}>Home</NavLink>
         </li>
         <li>
+          <NavLink to="/login" className={isLinkActive}>Entrar</NavLink>
+        </li>
+        <li>
+          <NavLink to="/register" className={isLinkActive}>Cadastrar</NavLink>
+        </li>
+        <li>
           <NavLink to="/about" className={isLinkActive}>Sobre</NavLink>
         </li>
       </menu>
