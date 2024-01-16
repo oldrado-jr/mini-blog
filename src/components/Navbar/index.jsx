@@ -1,17 +1,23 @@
 import { NavLink } from 'react-router-dom';
 
+import styles from './styles.module.css';
+
 function Navbar() {
+  const isLinkActive = ({ isActive }) => {
+    return isActive ? styles.active : '';
+  };
+
   return (
-    <nav>
-      <NavLink to="/">
+    <nav className={styles.navbar}>
+      <NavLink to="/" className={styles.brand}>
         Mini <span>Blog</span>
       </NavLink>
-      <menu>
+      <menu className={styles['links-list']}>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" className={isLinkActive}>Home</NavLink>
         </li>
         <li>
-          <NavLink to="/about">Sobre</NavLink>
+          <NavLink to="/about" className={isLinkActive}>Sobre</NavLink>
         </li>
       </menu>
     </nav>
