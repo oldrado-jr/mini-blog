@@ -2,10 +2,13 @@ import { NavLink } from 'react-router-dom';
 
 import { useAuthValue } from '../../context/AuthContext';
 
+import { useAuthentication } from '../../hooks/useAuthentication';
+
 import styles from './styles.module.css';
 
 function Navbar() {
   const { user } = useAuthValue();
+  const { logout } = useAuthentication();
 
   const isLinkActive = ({ isActive }) => {
     return isActive ? styles.active : '';
@@ -43,6 +46,11 @@ function Navbar() {
         <li>
           <NavLink to="/about" className={isLinkActive}>Sobre</NavLink>
         </li>
+        {user && (
+          <li>
+            <button onClick={logout}>Sair</button>
+          </li>
+        )}
       </menu>
     </nav>
   );
