@@ -53,7 +53,7 @@ function Register() {
             placeholder="Nome do usuário"
             required
             value={displayName}
-            onChange={(e) => setDisplayName(e.target.value.trim())}
+            onChange={(e) => setDisplayName(e.target.value)}
           />
         </label>
         <label>
@@ -64,7 +64,7 @@ function Register() {
             placeholder="E-mail do usuário"
             required
             value={email}
-            onChange={(e) => setEmail(e.target.value.trim())}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </label>
         <label>
@@ -75,7 +75,7 @@ function Register() {
             placeholder="Insira sua senha"
             required
             value={password}
-            onChange={(e) => setPassword(e.target.value.trim())}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
         <label>
@@ -86,7 +86,7 @@ function Register() {
             placeholder="Confirme a sua senha"
             required
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value.trim())}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </label>
         {!loading && <button className="btn">Cadastrar</button>}

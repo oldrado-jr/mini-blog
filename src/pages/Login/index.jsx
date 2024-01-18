@@ -43,7 +43,7 @@ function Login() {
             placeholder="E-mail do usuário"
             required
             value={email}
-            onChange={(e) => setEmail(e.target.value.trim())}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </label>
         <label>
@@ -54,7 +54,7 @@ function Login() {
             placeholder="Insira sua senha"
             required
             value={password}
-            onChange={(e) => setPassword(e.target.value.trim())}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
         {!loading && <button className="btn">Entrar</button>}
