@@ -1,0 +1,30 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form {
+  width: min(60%, 100%);
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+.search-form input {
+  margin-right: 10px;
+  width: 50%;
+}
+
+.no-posts {
+  text-align: center;
+}
+
+.no-posts p {
+  margin-bottom: 1.5em;
+}
+
+.no-posts a {
+  padding: 10px 25px;
+}
