@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useInsertDocument } from "../../hooks/useInsertDocument";
 import { useAuthValue } from "../../context/AuthContext";
@@ -9,17 +10,38 @@ function CreatePost() {
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
   const [body, setBody] = useState('');
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState('');
   const [formError, setFormError] = useState('');
 
   const { user } = useAuthValue();
   const { insertDocument, response } = useInsertDocument('posts');
   const { loading, error } = response;
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setFormError('');
+
+    // validate the image URL
+    try {
+      new URL(image);
+    } catch (error) {
+      setFormError('A imagem precisa ser uma URL.');
+    }
+
+    // check all form values
+    if (!(title && image && tags && body)) {
+      setFormError('Por favor, preencha todos os campos!');
+    }
+
+    if (formError) {
+      return;
+    }
+
+    // split tags into an array
+    const tagsList = tags.split(',').map((tag) => tag.trim().toLowerCase());
 
     const { uid, displayName } = user;
 
@@ -27,10 +49,12 @@ function CreatePost() {
       title,
       image,
       body,
-      tags,
+      tagsList,
       uid,
       createdBy: displayName,
     });
+
+    navigate('/');
   };
 
   return (
@@ -46,7 +70,7 @@ function CreatePost() {
             required
             placeholder="Pense num bom título..."
             value={title}
-            onChange={(e) => setTitle(e.target.value.trim())}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </label>
         <label>
@@ -57,7 +81,7 @@ function CreatePost() {
             required
             placeholder="Insira uma URL da imagem que representa o seu post"
             value={image}
-            onChange={(e) => setImage(e.target.value.trim())}
+            onChange={(e) => setImage(e.target.value)}
           />
         </label>
         <label>
@@ -67,7 +91,7 @@ function CreatePost() {
             required
             placeholder="Insira o conteúdo do post"
             value={body}
-            onChange={(e) => setBody(e.target.value.trim())}
+            onChange={(e) => setBody(e.target.value)}
           ></textarea>
         </label>
         <label>
@@ -78,12 +102,13 @@ function CreatePost() {
             required
             placeholder="Insira as tags separadas por vírgula"
             value={tags}
-            onChange={(e) => setTags(e.target.value.trim())}
+            onChange={(e) => setTags(e.target.value)}
           />
         </label>
         {!loading && <button className="btn">Cadastrar</button>}
         {loading && <button className="btn" disabled>Aguarde...</button>}
         {error && <p className="error">{error}</p>}
+        {formError && <p className="error">{formError}</p>}
       </form>
     </div>
   );
