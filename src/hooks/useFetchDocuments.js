@@ -35,8 +35,9 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
           where(
             'tagsList',
             'array-contains',
-            orderBy('createdAt', 'desc')
-          )
+            search
+          ),
+          orderBy('createdAt', 'desc')
         );
       } else {
         q = query(collectionRef, orderBy('createdAt', 'desc'));
@@ -51,7 +52,6 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
         );
       });
     } catch (err) {
-      console.log(err);
       setError(err.message);
     } finally {
       setLoading(false);
