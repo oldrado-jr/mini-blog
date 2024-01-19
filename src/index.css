@@ -96,7 +96,7 @@ textarea::placeholder {
   background: #000;
 }
 
-.brn.btn-danger:hover {
+.btn.btn-danger:hover {
   background: #dc3545;
 }
 
