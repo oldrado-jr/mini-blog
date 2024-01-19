@@ -39,6 +39,12 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
           ),
           orderBy('createdAt', 'desc')
         );
+      } else if (uid) {
+        q = query(
+          collectionRef,
+          where('uid', '==', uid),
+          orderBy('createdAt', 'desc')
+        );
       } else {
         q = query(collectionRef, orderBy('createdAt', 'desc'));
       }
@@ -56,7 +62,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
     } finally {
       setLoading(false);
     }
-  }, [docCollection, search, cancelled]);
+  }, [docCollection, search, uid, cancelled]);
 
   useEffect(() => {
     return () => setCancelled(true);
