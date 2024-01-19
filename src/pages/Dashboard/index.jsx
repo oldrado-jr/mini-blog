@@ -4,18 +4,18 @@ import { useAuthValue } from '../../context/AuthContext';
 import { useFetchDocuments } from '../../hooks/useFetchDocuments';
 
 import styles from './styles.module.css';
+import { useDeleteDocument } from '../../hooks/useDeleteDocument';
 
 function Dashboard() {
   const { user } = useAuthValue();
   const { uid } = user;
 
   const { documents: posts, loading } = useFetchDocuments('posts', null, uid);
+  const { deleteDocument } = useDeleteDocument('posts');
 
   if (loading) {
     return <p>Carregando...</p>;
   }
-
-  const deletePost = (id) => { };
 
   return (
     <div className={styles.dashboard}>
@@ -50,7 +50,7 @@ function Dashboard() {
                   <button
                     type="button"
                     className="btn btn-outline btn-danger"
-                    onClick={() => deletePost(id)}
+                    onClick={() => deleteDocument(id)}
                   >
                     Excluir
                   </button>
