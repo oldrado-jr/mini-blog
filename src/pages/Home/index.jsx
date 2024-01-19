@@ -13,6 +13,10 @@ function Home() {
 
   const navigate = useNavigate();
 
+  if (loading) {
+    return <p>Carregando...</p>;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
