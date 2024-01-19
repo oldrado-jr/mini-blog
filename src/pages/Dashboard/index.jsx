@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useAuthValue } from '../../context/AuthContext';
 import { useFetchDocuments } from '../../hooks/useFetchDocuments';
 
+import styles from './styles.module.css';
+
 function Dashboard() {
   const { user } = useAuthValue();
   const { uid } = user;
@@ -16,19 +18,19 @@ function Dashboard() {
   const deletePost = (id) => { };
 
   return (
-    <div>
+    <div className={styles.dashboard}>
       <h2>Dashboard</h2>
       <p>Gerencie os seus posts</p>
       {posts && posts.length === 0 ? (
-        <div>
+        <div className="no-posts">
           <p>Não foram encontrados posts</p>
           <Link to="/posts/create" className="btn">
             Criar primeiro post
           </Link>
         </div>
       ) : (
-        <table>
-          <thead>
+        <table className={styles['post-table']}>
+          <thead className={styles['post-header']}>
             <tr>
               <th>Título</th>
               <th>Ações</th>
@@ -36,7 +38,7 @@ function Dashboard() {
           </thead>
           <tbody>
             {posts && posts.map(({ id, title }) => (
-              <tr key={id}>
+              <tr key={id} className={styles['post-row']}>
                 <td>{title}</td>
                 <td>
                   <Link to={`/posts/${id}`} className="btn btn-outline">
