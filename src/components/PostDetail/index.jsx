@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 
 function PostDetail({ post }) {
-  const { uid, title, image, tagsList, createdBy } = post;
+  const { id, title, image, tagsList, createdBy } = post;
 
   return (
     <div className={styles['post-detail']}>
@@ -19,7 +19,7 @@ function PostDetail({ post }) {
           </p>
         ))}
       </div>
-      <Link to={`/posts/${uid}`} className="btn btn-outline">
+      <Link to={`/posts/${id}`} className="btn btn-outline">
         Ler
       </Link>
     </div>

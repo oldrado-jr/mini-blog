@@ -36,7 +36,7 @@ function Home() {
       <div>
         {loading && <p>Carregando...</p>}
         {posts && posts.map((post) => (
-          <PostDetail key={post.uid} post={post} />
+          <PostDetail key={post.id} post={post} />
         ))}
         {posts && posts.length === 0 && (
           <div className={styles['no-posts']}>

@@ -28,7 +28,7 @@ function Search() {
           </div>
         )}
         {posts && posts.map((post) => (
-          <PostDetail key={post.uid} post={post} />
+          <PostDetail key={post.id} post={post} />
         ))}
       </div>
     </div>
