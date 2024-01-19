@@ -43,7 +43,7 @@ function Home() {
           <PostDetail key={post.id} post={post} />
         ))}
         {posts && posts.length === 0 && (
-          <div className={styles['no-posts']}>
+          <div className="no-posts">
             <p>Não foram encontrados posts</p>
             <Link to="/posts/create" className="btn">
               Criar primeiro post

@@ -18,7 +18,7 @@ function Search() {
       <h2>Search</h2>
       <div>
         {posts && posts.length === 0 && (
-          <div className={styles['no-posts']}>
+          <div className="no-posts">
             <p>
               Não foram encontrados posts a partir da sua busca...
             </p>

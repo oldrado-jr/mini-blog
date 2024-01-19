@@ -111,3 +111,15 @@ button:disabled {
   padding: 5px;
   border-radius: 5px;
 }
+
+.no-posts {
+  text-align: center;
+}
+
+.no-posts p {
+  margin-bottom: 1.5em;
+}
+
+.no-posts a {
+  padding: 10px 25px;
+}
