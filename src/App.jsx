@@ -17,6 +17,7 @@ import EditPost from './pages/EditPost';
 import Dashboard from './pages/Dashboard';
 import Search from './pages/Search';
 import Post from './pages/Post';
+import Page404 from './pages/Page404';
 
 import './App.css';
 
@@ -67,6 +68,7 @@ function App() {
                 path="/dashboard"
                 element={user ? <Dashboard /> : <Navigate to="/login" />}
               />
+              <Route path="*" element={<Page404 />} />
             </Routes>
           </div>
           <Footer />
