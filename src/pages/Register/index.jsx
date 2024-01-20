@@ -29,9 +29,7 @@ function Register() {
       return;
     }
 
-    const response = await createUser(user);
-
-    console.log(response);
+    await createUser(user);
   };
 
   useEffect(() => {
