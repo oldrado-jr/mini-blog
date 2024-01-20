@@ -13,6 +13,7 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import CreatePost from './pages/CreatePost';
+import EditPost from './pages/EditPost';
 import Dashboard from './pages/Dashboard';
 import Search from './pages/Search';
 import Post from './pages/Post';
@@ -53,6 +54,10 @@ function App() {
               <Route
                 path="/register"
                 element={!user ? <Register /> : <Navigate to="/" />}
+              />
+              <Route
+                path="/posts/edit/:id"
+                element={user ? <EditPost /> : <Navigate to="/login" />}
               />
               <Route
                 path="/posts/create"
