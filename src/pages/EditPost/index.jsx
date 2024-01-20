@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { useInsertDocument } from "../../hooks/useInsertDocument";
+import { useUpdateDocument } from "../../hooks/useUpdateDocument";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
-import { useAuthValue } from "../../context/AuthContext";
 
 import styles from './styles.module.css';
 
@@ -17,8 +16,7 @@ function EditPost() {
   const { id } = useParams();
   const { document: post } = useFetchDocument('posts', id);
 
-  const { user } = useAuthValue();
-  const { insertDocument, response } = useInsertDocument('posts');
+  const { updateDocument, response } = useUpdateDocument('posts');
   const { loading, error } = response;
 
   const navigate = useNavigate();
@@ -62,18 +60,16 @@ function EditPost() {
     // split tags into an array
     const tagsList = tags.split(',').map((tag) => tag.trim().toLowerCase());
 
-    const { uid, displayName } = user;
-
-    await insertDocument({
+    const data = {
       title,
       image,
       body,
       tagsList,
-      uid,
-      createdBy: displayName,
-    });
+    };
 
-    navigate('/');
+    await updateDocument(id, data);
+
+    navigate('/dashboard');
   };
 
   return (
