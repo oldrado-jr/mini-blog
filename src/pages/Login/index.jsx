@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { useAuthentication } from "../../hooks/useAuthentication";
 
@@ -57,6 +58,12 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
+        <p className={styles['sign-up']}>
+          Não tem uma conta?&nbsp;
+          <Link to="/register">
+            Cadastre-se
+          </Link>
+        </p>
         {!loading && <button className="btn">Entrar</button>}
         {loading && <button className="btn" disabled>Aguarde...</button>}
         {error && <p className="error">{error}</p>}

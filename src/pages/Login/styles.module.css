@@ -5,3 +5,11 @@
 .login p {
   color: #aaa;
 }
+
+.login .sign-up {
+  color: #000;
+}
+
+.login .sign-up a {
+  font-weight: bold;
+}
